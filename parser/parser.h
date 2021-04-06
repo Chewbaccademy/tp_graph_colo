@@ -1,7 +1,7 @@
 #ifndef PARSER_H
-#define PARSER_
+#define PARSER_H
 
-#include "../graph/graph.h"
+#include "../graph_colo/graph_colo.h"
 
 #define BUFFER_SIZE 256
 
@@ -17,6 +17,8 @@
 graph readGraph(char* filename);
 
 void writePuml(char* filename, graph g);
+
+void writePumlColo(char* filename, graph_colo myGraph);
 
 
 #endif 

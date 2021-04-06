@@ -79,3 +79,31 @@ void writePuml(char* filename, graph g) {
     fprintf(output, "\n\n@enduml\n");
     fclose(output);
 }
+
+void writePumlColo(char* filename, graph_colo myGraph) {
+    FILE* output = fopen(filename, "w");
+
+    fprintf(output, "@startuml\n\n");
+
+        color maxColor = getMaxColor(myGraph);
+     unsigned int colorMaxSize = 256 * 256 * 256;
+
+    for (int i = 0; i < myGraph->g->size; i ++) {
+
+        color col = (int)((myGraph->colors[i] / (float)maxColor) * colorMaxSize);
+        fprintf(output, "usecase \"%d\" #%6X\n", i+1, col);
+    }
+
+
+
+    for (int i = 0; i < myGraph->g->size; i ++) {
+        for (int j = i; j < myGraph->g->size; j++) {
+            if (myGraph->g->content[i][j]) {
+                fprintf(output, "%d -- %d\n", i + 1 , j +1 );
+            }
+        }
+    }
+
+    fprintf(output, "\n\n@enduml\n");
+    fclose(output);
+}
