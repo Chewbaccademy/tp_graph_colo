@@ -143,7 +143,41 @@ void freeMatrix(adjacency_matrix* matrix){
  * \return void
  * 
  */
-void freeGraph(graph* graph) {
-    freeMatrix(*graph);
-    *graph = GRAPH_NULL;
+void freeGraph(graph* myGraph) {
+    freeMatrix(*myGraph);
+    *myGraph = GRAPH_NULL;
+}
+
+/**
+ * \brief Get the coefficient 
+ * 
+ * \param myGraph the graph that contains the tnodes
+ * \param x the first node
+ * \param y the secound node
+ * 
+ * \return the coefficient
+ */
+int edgeExists(graph myGraph, node x, node y) {
+    if (x > myGraph->size || y > myGraph->size || x <= 0 || y <= 0) {
+        fprintf(stderr, "ERROR : [edgeExists] Invalid nodes %d, %d", x, y);
+        exit(1);
+        return -1;
+    }
+
+    return myGraph->content[x -1 ][y -1 ];
+}
+
+int degree(graph myGraph, node x) {
+    if (x > myGraph->size || x <= 0) {
+        fprintf(stderr, "ERROR : [degree] Invalid nodes %d", x);
+        exit(1);
+        return -1;
+    }
+    int cpt = 0;
+
+    for (int i = 0; i < myGraph->size; i++) {
+        cpt += myGraph->content[x -1][i] == 0;
+    }
+
+    return cpt;
 }

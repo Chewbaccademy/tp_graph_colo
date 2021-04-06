@@ -112,6 +112,27 @@ void printGraph(graph myGraph);
  * \return void
  * 
  */
-void freeGraph(graph* graph);
+void freeGraph(graph* myGraph);
+
+/**
+ * \brief Get the coefficient 
+ * 
+ * \param myGraph the graph that contains the tnodes
+ * \param x the first node
+ * \param y the secound node
+ * 
+ * \return the coefficient
+ */
+int edgeExists(graph myGraph, node x, node y);
+
+/**
+ * \brief give the degree of a giving node
+ * 
+ * \param myGraph the graph getting the node
+ * \param x node we want the degree
+ * 
+ * \return int : the x node's degree
+ */
+int degree(graph myGraph, node x);
 
 #endif
