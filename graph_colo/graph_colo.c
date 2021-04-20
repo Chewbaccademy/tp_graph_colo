@@ -113,7 +113,6 @@ void colorColoredGraphWithColoredColors(graph_colo myGraph)
     {
         color col = 1;
         while (isNeighborColoredWithColoredColor(myGraph, a, col))
-            ;
         {
             col++;
         }
@@ -191,10 +190,9 @@ int isNeighborColoredWithColoredColor(graph_colo g, node x, color col)
         // printf("Edge exists %d, %d => %d\n", x,i + 1,edgeExists(g->g, x, i + 1));
         if (edgeExists(g->g, x, i + 1))
         {
-            printf("Test %d => %d (%d)\n", i + 1, g->colors[i], col);
             if (g->colors[i] == col)
             {
-                printf("%d taken by %d\n", col, x);
+                printf("%d taken by %d\n", col, i + 1);
                 return 1;
             }
         }
