@@ -1,7 +1,7 @@
 #ifndef GRAPH_COLO_H
 #define GRAPH_COLO_H
 
-#include "../graph/graph.h"
+#include "../graph/graph.c"
 
 typedef unsigned int color;
 
@@ -68,6 +68,10 @@ int getSaturation(graph_colo myGraph, node target);
  * \return void
  */
 void colorColoredGraphWithColoredColors(graph_colo g);
+
+
+// TODO : comment
+void colorColoredGraphWithRandomColoredColor(graph_colo myGraph);
 
 /**
  * \brief function to find the uncolored node with the highest saturation and degree within a colored graph

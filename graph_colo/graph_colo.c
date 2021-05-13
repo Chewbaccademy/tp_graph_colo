@@ -113,10 +113,20 @@ void colorColoredGraphWithColoredColors(graph_colo myGraph)
     {
         color col = 1;
         while (isNeighborColoredWithColoredColor(myGraph, a, col))
-            ;
         {
             col++;
         }
+
+        setColor(myGraph, a, col);
+    }
+}
+
+void colorColoredGraphWithRandomColoredColor(graph_colo myGraph) {
+    node a;
+
+    for(a = 1; a <= myGraph->g->size; a++)
+    {
+        color col = rand() % myGraph->g->size + 1;
 
         setColor(myGraph, a, col);
     }
@@ -130,8 +140,6 @@ int setColor(graph_colo myGraph, node x, color col)
         exit(1);
         return 0;
     }
-
-    printf("[DEBUG] => SET %d - %d\n", x, col);
 
     myGraph->colors[x - 1] = col;
     return 1;

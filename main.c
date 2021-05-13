@@ -1,17 +1,24 @@
-#include "./parser/parser.h"
+#include "./parser/parser.c"
+#include "./genetic/genetic.c"
 
 int main(int argc, char const *argv[])
 {
-    graph myGraph = readGraph("./assets/1-FullIns_3.col");
+    srand(time(NULL));
+    int TAILLE = 10;
+    
+    graph_colo* table_graph_colo =  generatePopulation(TAILLE, "./assets/1-FullIns_3.col");
 
-    graph_colo myGraphColo = createGraphColo(myGraph->size);
-    myGraphColo->g = myGraph;
+    /* afficheTableDeGraphColo(table_graph_colo, TAILLE);
+ */
 
-    colorColoredGraphWithColoredColors(myGraphColo);
+    afficheTableDeGraphColo(table_graph_colo, TAILLE);
 
-    printGraphColo(myGraphColo);
+    for(int i = 0; i < TAILLE; i++){
+        printf("interferences du graph : %d\n", nbInterferences(table_graph_colo[i]));
+        printf("colors du graph : %d\n", nbColors(table_graph_colo[i]));
+    }
 
-    writePumlColo("res2.puml", myGraphColo);
+    writePumlPop(table_graph_colo, TAILLE);
 
     return 0;
 }
