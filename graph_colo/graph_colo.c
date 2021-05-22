@@ -130,8 +130,6 @@ int setColor(graph_colo myGraph, node x, color col)
         return 0;
     }
 
-    printf("[DEBUG] => SET %d - %d\n", x, col);
-
     myGraph->colors[x - 1] = col;
     return 1;
 }
@@ -234,4 +232,22 @@ void printGraphColo(graph_colo myGraph)
     printf("\n");
 
     printGraph(myGraph->g);
+}
+
+/**
+ * \brief color a colored graph with random colors (so 2 neighbor vertexes can have the same color)
+ * 
+ * \param myGraph the graph which have to be colored
+ * 
+ * \return the colored graph with random colors
+ */
+void colorGraphWithRandomColors(graph_colo myGraph){
+
+    node a;
+    color col;
+
+    for(a = 1; a <= myGraph->g->size; a++){
+        col = (rand() % myGraph->g->size) + 1;
+        setColor(myGraph, a, col);
+    }
 }
