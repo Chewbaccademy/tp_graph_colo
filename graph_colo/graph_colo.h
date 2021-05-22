@@ -1,7 +1,7 @@
 #ifndef GRAPH_COLO_H
 #define GRAPH_COLO_H
 
-#include "../graph/graph.h"
+#include "../graph/graph.c"
 
 typedef unsigned int color;
 
@@ -121,5 +121,14 @@ int isNeighborColoredWithColoredColor(graph_colo g, node x, color col);
  * \return the max color
  */
 color getMaxColor(graph_colo myGraph);
+
+/**
+ * \brief color a colored graph with random colors (so 2 neighbor vertexes can have the same color)
+ * 
+ * \param myGraph the graph which have to be colored
+ * 
+ * \return the colored graph with random colors
+ */
+void colorGraphWithRandomColors(graph_colo myGraph);
 
 #endif 
